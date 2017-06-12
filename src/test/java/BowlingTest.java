@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -10,12 +11,27 @@ import static org.junit.Assert.assertThat;
 
 public class BowlingTest {
 
+    private Game game;
+
+
+    @Before
+    public void setUp() throws Exception {
+        game = new Game();
+    }
+
     @Test
     public void tenRolsWithZeroPoints_ScoreShouldBeZero() throws Exception {
-        Game game = new Game();
         for (int i = 0; i < 10; i++) {
             game.roll(0);
         }
         assertThat(game.score(), is(equalTo(0)));
+    }
+
+    @Test
+    public void tenRolsWithOnePoints_ScoreShouldBeTen() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            game.roll(1);
+        }
+        assertThat(game.score(), is(equalTo(10)));
     }
 }

@@ -42,5 +42,11 @@ public class BowlingTest {
         assertThat(game.score(), is(22));
     }
 
+    @Test
+    public void scoringPerfectGame() {
+        game.roll(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+        assertThat(game.score(), is(300));
+    }
+
 
 }

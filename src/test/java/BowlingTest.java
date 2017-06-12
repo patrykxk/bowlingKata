@@ -21,29 +21,21 @@ public class BowlingTest {
 
     @Test
     public void tenRolsWithZeroPoints_ScoreShouldBeZero() throws Exception {
-        rollMany(20, 0);
+        game.roll(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         assertThat(game.score(), is(equalTo(0)));
     }
 
     @Test
     public void tenRolsWithOnePoints_ScoreShouldBeTen() throws Exception {
-        rollMany(20, 1);
+        game.roll(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         assertThat(game.score(), is(equalTo(20)));
     }
 
     @Test
     public void rollSpare() throws Exception {
-        game.roll(5);
-        game.roll(5);
-        game.roll(3);
-        rollMany(17,0);
+        game.roll(5, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         assertThat(game.score(), is(equalTo(16)));
     }
 
 
-    private void rollMany(int rolls, int pins) {
-        for (int i = 0; i < rolls; i++) {
-            game.roll(pins);
-        }
-    }
 }

@@ -1,7 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -22,19 +21,25 @@ public class BowlingTest {
     @Test
     public void tenRolsWithZeroPoints_ScoreShouldBeZero() throws Exception {
         game.roll(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        assertThat(game.score(), is(equalTo(0)));
+        assertThat(game.score(), is(0));
     }
 
     @Test
     public void tenRolsWithOnePoints_ScoreShouldBeTen() throws Exception {
         game.roll(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-        assertThat(game.score(), is(equalTo(20)));
+        assertThat(game.score(), is(20));
     }
 
     @Test
-    public void rollSpare() throws Exception {
+    public void canScoreSpare() throws Exception {
         game.roll(5, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        assertThat(game.score(), is(equalTo(16)));
+        assertThat(game.score(), is(16));
+    }
+
+    @Test
+    public void canScoreStrike() throws Exception {
+        game.roll(10, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        assertThat(game.score(), is(22));
     }
 
 
